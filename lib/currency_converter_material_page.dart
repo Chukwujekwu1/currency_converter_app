@@ -8,7 +8,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         color: Colors.black,
-        width: 2,
+        width: 2.0,
         style: BorderStyle.solid,
         strokeAlign: BorderSide.strokeAlignInside,
       ),
@@ -30,23 +30,30 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            TextField(
-              style: const TextStyle(
-                color: Colors.black,
-              ),
-              decoration: InputDecoration(
-                hintText: "Enter amount in USD",
-                hintStyle: const TextStyle(
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: TextField(
+                style: const TextStyle(
                   color: Colors.black,
                 ),
-                prefixIcon: const Icon(
-                  Icons.monetization_on_outlined,
+                decoration: InputDecoration(
+                  hintText: "Enter amount in USD",
+                  hintStyle: const TextStyle(
+                    color: Colors.black,
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.monetization_on_outlined,
+                  ),
+                  prefixIconColor: Colors.black,
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: border,
+                  enabledBorder: border,
                 ),
-                prefixIconColor: Colors.black,
-                filled: true,
-                fillColor: Colors.white,
-                focusedBorder: border,
-                enabledBorder: border,
+                keyboardType: const TextInputType.numberWithOptions(
+                  signed: true,
+                  decimal: true,
+                ),
               ),
             )
           ],
