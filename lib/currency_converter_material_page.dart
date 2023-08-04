@@ -30,8 +30,8 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: TextField(
                 style: const TextStyle(
                   color: Colors.black,
@@ -55,7 +55,15 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   decimal: true,
                 ),
               ),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text("Jazz"),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text("Click Me"),
+            ),
           ],
         ),
       ),
