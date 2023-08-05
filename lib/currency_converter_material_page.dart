@@ -57,7 +57,9 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                print("Button clicked");
+              },
               child: const Text("Jazz"),
             ),
             TextButton(
