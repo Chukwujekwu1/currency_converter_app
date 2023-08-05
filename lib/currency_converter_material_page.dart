@@ -1,11 +1,17 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+//! 1. create a variable that stores the converted currency value
+//! 2. create a function that multiplys the value given in the text fieild by the exchange rate
+//! 3. store the value in the variable that we created
+//! 4. display the variable
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double result = 0;
+    final TextEditingController textEditingController = TextEditingController();
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         color: Colors.black,
@@ -16,13 +22,13 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
     );
 
-    //!
+    //
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "Currency Converter",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         backgroundColor: Colors.blueGrey,
@@ -34,17 +40,20 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              '0',
-              style: TextStyle(
+            // to convert from int to string you use the value.toString method
+            // to convert from string to int or double uses datatype.parse() method
+             Text(
+             result.toString() ,
+              style: const TextStyle(
                 fontSize: 45,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: const EdgeInsets.all(10.0),
               child: TextField(
+                controller: textEditingController,
                 style: const TextStyle(
                   color: Colors.black,
                 ),
@@ -69,18 +78,16 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               ),
             ),
 
-            ///! they are two types of button elevated and text button in flutter
-            ///! elevatedbuttton has shadow while textbutton does not
+            /// they are two types of button elevated and text button in flutter
+            /// elevatedbuttton has shadow while textbutton does not
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: TextButton(
+              child: ElevatedButton(
                 onPressed: () {
-                  //! types on mode debug, release, profile
-                  if (kDebugMode) {
-                    debugPrint('Button Clicked');
-                  }
+                  // types on mode debug, release, profile
+                  result = double.parse(textEditingController.text)* 81;
                 },
-                style: TextButton.styleFrom(
+                style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 50),
