@@ -5,10 +5,15 @@ import 'package:flutter/material.dart';
 //! 3. store the value in the variable that we created
 //! 4. display the variable
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
-
   @override
+  State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage> {
+
+   @override
   Widget build(BuildContext context) {
     double result = 0;
     final TextEditingController textEditingController = TextEditingController();
@@ -42,8 +47,8 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           children: [
             // to convert from int to string you use the value.toString method
             // to convert from string to int or double uses datatype.parse() method
-             Text(
-             result.toString() ,
+            Text(
+              result.toString(),
               style: const TextStyle(
                 fontSize: 45,
                 fontWeight: FontWeight.bold,
@@ -85,7 +90,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // types on mode debug, release, profile
-                  result = double.parse(textEditingController.text)* 81;
+                  result = double.parse(textEditingController.text) * 81;
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
@@ -104,5 +109,15 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+
+class CurrencyConverterMaterialPagee extends StatelessWidget {
+  const CurrencyConverterMaterialPagee({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+   return Container();
   }
 }
