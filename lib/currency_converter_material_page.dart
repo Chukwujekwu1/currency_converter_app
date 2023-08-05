@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
@@ -56,15 +57,35 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                print("Button clicked");
-              },
-              child: const Text("Jazz"),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: const Text("Click Me"),
+            //! they are two types of button elevated and text button in flutter
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextButton(
+                onPressed: () {
+                  //! types on mode debug, release, profile
+                  if (kDebugMode) {
+                    debugPrint('Button Clicked');
+                  }
+                },
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                    Colors.black,
+                  ),
+                  //! foreground is used to set the color for text and icon in button
+                  foregroundColor: MaterialStatePropertyAll(
+                    Colors.white,
+                  ),
+                  minimumSize: MaterialStatePropertyAll(
+                    Size(
+                      double.infinity, // width double.infinity is used to make the width take as much space as possible on any screen instead of set in px i.e to make it responsive  
+                      50, // height
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  "Convert",
+                ),
+              ),
             ),
           ],
         ),
