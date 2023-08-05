@@ -18,6 +18,17 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
     //!
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Currency Converter",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.blueGrey,
+        centerTitle: true,
+        elevation: 0,
+      ),
       backgroundColor: Colors.blueGrey,
       body: Center(
         child: Column(
