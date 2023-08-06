@@ -17,6 +17,13 @@ class _CurrencyConverterMaterialPageState
     extends State<CurrencyConverterMaterialPage> {
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
+  void convert() {
+    setState(
+      () {
+        result = double.parse(textEditingController.text) * 767.45;
+      },
+    );
+  }
 
 // note only use the build function for designing the app do not put any heavy load in the build function
   @override
@@ -46,22 +53,23 @@ class _CurrencyConverterMaterialPageState
       ),
       backgroundColor: Colors.blueGrey,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // to convert from int to string you use the value.toString method
-            // to convert from string to int or double uses datatype.parse() method
-            Text(
-              "₦ $result ",
-              style: const TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // to convert from int to string you use the value.toString method
+              // to convert from string to int or double uses datatype.parse() method
+              Text(
+                "₦ ${ result != 0 ? result.toStringAsFixed(2):  result.toStringAsFixed(0) } ", //! this is an if else statement, // .toStringAsFixed(2) method is used to indicate the maximun number of after the decimal dot 
+                style: const TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
+              const SizedBox(height: 60),
+              TextField(
                 controller: textEditingController,
                 style: const TextStyle(
                   color: Colors.black,
@@ -85,20 +93,14 @@ class _CurrencyConverterMaterialPageState
                   decimal: true,
                 ),
               ),
-            ),
+              //sizedbox only have the width and height property
+              const SizedBox(height: 15),
 
-            /// they are two types of button elevated and text button in flutter
-            /// elevatedbuttton has shadow while textbutton does not
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ElevatedButton(
+              /// they are two types of button elevated and text button in flutter
+              /// elevatedbuttton has shadow while textbutton does not
+              ElevatedButton(
                 onPressed: () {
-                  // types on mode debug, release, profile
-                  setState(
-                    () {
-                      result = double.parse(textEditingController.text) * 767.45;
-                    },
-                  );
+                  convert(); // types on mode debug, release, profile
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
@@ -112,8 +114,8 @@ class _CurrencyConverterMaterialPageState
                   "Convert",
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
