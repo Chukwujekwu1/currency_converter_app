@@ -7,16 +7,20 @@ import 'package:flutter/material.dart';
 
 class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
+
   @override
-  State<CurrencyConverterMaterialPage> createState() => _CurrencyConverterMaterialPageState();
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
 }
 
-class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMaterialPage> {
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
 
-   @override
+// note only use the build function for designing the app do not put any heavy load in the build function
+  @override
   Widget build(BuildContext context) {
-    double result = 0;
-    final TextEditingController textEditingController = TextEditingController();
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         color: Colors.black,
@@ -48,7 +52,7 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
             // to convert from int to string you use the value.toString method
             // to convert from string to int or double uses datatype.parse() method
             Text(
-              result.toString(),
+              "₦ $result ",
               style: const TextStyle(
                 fontSize: 45,
                 fontWeight: FontWeight.bold,
@@ -90,7 +94,11 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
               child: ElevatedButton(
                 onPressed: () {
                   // types on mode debug, release, profile
-                  result = double.parse(textEditingController.text) * 81;
+                  setState(
+                    () {
+                      result = double.parse(textEditingController.text) * 767.45;
+                    },
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
@@ -112,12 +120,11 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
   }
 }
 
-
 class CurrencyConverterMaterialPagee extends StatelessWidget {
   const CurrencyConverterMaterialPagee({super.key});
 
   @override
   Widget build(BuildContext context) {
-   return Container();
+    return Container();
   }
 }
