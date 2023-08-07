@@ -22,19 +22,11 @@ class _CurrencyConverterCupertinoPageState
 
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Colors.black,
-        width: 2.0,
-        style: BorderStyle.solid,
-        strokeAlign: BorderSide.strokeAlignInside,
-      ),
-      borderRadius: BorderRadius.circular(10),
-    );
+    
 
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-        middle:  Text(
+        middle: Text(
           "Currency Converter",
           style: TextStyle(
             color: CupertinoColors.white,
@@ -43,7 +35,7 @@ class _CurrencyConverterCupertinoPageState
         backgroundColor: CupertinoColors.systemGrey3,
       ),
       backgroundColor: CupertinoColors.systemGrey3,
-      child : Center(
+      child: Center(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -56,29 +48,22 @@ class _CurrencyConverterCupertinoPageState
                 style: const TextStyle(
                   fontSize: 45,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                 ),
               ),
               const SizedBox(height: 60),
-             CupertinoTextField(
+              CupertinoTextField(
                 controller: textEditingController,
                 style: const TextStyle(
                   color: CupertinoColors.black,
                 ),
-                decoration: InputDecoration(
-                  hintText: "Enter amount in USD",
-                  hintStyle: const TextStyle(
-                    color: Colors.black,
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.monetization_on_outlined,
-                  ),
-                  prefixIconColor: Colors.black,
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusedBorder: border,
-                  enabledBorder: border,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(5),
+                  color: CupertinoColors.white,
                 ),
+                placeholder: "Please enter the amount in USD",
+                prefix: const Icon(CupertinoIcons.money_dollar_circle),
                 keyboardType: const TextInputType.numberWithOptions(
                   signed: true,
                   decimal: true,
@@ -89,18 +74,11 @@ class _CurrencyConverterCupertinoPageState
 
               /// they are two types of button elevated and text button in flutter
               /// elevatedbuttton has shadow while textbutton does not
-              ElevatedButton(
+              CupertinoButton(
                 onPressed: () {
                   convert(); // types on mode debug, release, profile
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
+                color: CupertinoColors.black,
                 child: const Text(
                   "Convert",
                 ),
