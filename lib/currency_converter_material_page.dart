@@ -24,6 +24,12 @@ class _CurrencyConverterMaterialPageState
       },
     );
   }
+  // this id used to prevent memory leak
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
 // note only use the build function for designing the app do not put any heavy load in the build function
   @override
